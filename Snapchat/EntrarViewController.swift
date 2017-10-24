@@ -29,7 +29,7 @@ class EntrarViewController: UIViewController {
     @IBAction func logar(_ sender: Any) {
         if let email = self.inputEmail.text {
             if let senha = self.inputSenha.text {
-                self.firebaseService.loginUsuario(email: email, senha: senha, response: { (user, error) in
+                self.firebaseService.auth.signIn(withEmail: email, password: senha, completion: { (user, error) in
                     if error == nil {
                         if user == nil {
                             // Usuario nao esta logado
@@ -47,16 +47,4 @@ class EntrarViewController: UIViewController {
             }
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

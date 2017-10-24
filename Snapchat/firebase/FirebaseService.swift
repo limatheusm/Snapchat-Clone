@@ -16,28 +16,6 @@ class FirebaseService {
         self.auth = Auth.auth()
     }
     
-    func logout(response: (Bool) -> Void) {
-        do {
-            try self.auth.signOut()
-            response(true)
-        }
-        catch {
-            response(false)
-        }
-    }
-    
-    func cadastrarUsuario(email: String, senha: String, response: @escaping (User?, Error?) -> Void) {
-        self.auth.createUser(withEmail: email, password: senha) { (user, error) in
-            response(user, error)
-        }
-    }
-    
-    func loginUsuario(email: String, senha: String, response: @escaping (User?, Error?) -> Void) {
-        self.auth.signIn(withEmail: email, password: senha) { (user, error) in
-            response(user, error)
-        }
-    }
-    
     func tratarErroCadastro(error: Error?) -> String {
         let erro = error! as NSError
         var mensagemErro = ""

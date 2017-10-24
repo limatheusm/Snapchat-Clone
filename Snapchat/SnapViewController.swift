@@ -22,10 +22,12 @@ class SnapViewController: UIViewController {
     }
     
     @IBAction func sair(_ sender: Any) {
-        self.firebaseService.logout { (success) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
-            }
+        do {
+            try self.firebaseService.auth.signOut()
+            self.dismiss(animated: true, completion: nil)
+        }
+        catch {
+            
         }
     }
     

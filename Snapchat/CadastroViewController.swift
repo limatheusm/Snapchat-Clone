@@ -32,7 +32,7 @@ class CadastroViewController: UIViewController {
                 if let confirmarSenha = self.inputConfirmarSenha.text {
                     if senha == confirmarSenha {
                         // Criar conta no Firebase
-                        self.firebaseService.cadastrarUsuario(email: email, senha: senha, response: { (user, error) in
+                        self.firebaseService.auth.createUser(withEmail: email, password: senha, completion: { (user, error) in
                             if error == nil {
                                 if user == nil {
                                     self.util.exibirMensagem(titulo: "Erro ao autenticar", mensagem: "Problema ao realizar autenticação, tente novamente", view: self)
