@@ -13,12 +13,16 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBOutlet weak var inputDescricao: UITextField!
     @IBOutlet weak var imagem: UIImageView!
+    @IBOutlet weak var botaoEnviar: UIButton!
     
     let imagePicker = UIImagePickerController()
+    var idImagem = NSUUID().uuidString
+    let firebaseService: FirebaseService = FirebaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.botaoEnviar.isEnabled = false
+        self.botaoEnviar.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
         self.imagePicker.delegate = self
     }
@@ -37,17 +41,32 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imgRecuperada = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.imagem.image = imgRecuperada
+        // Habilita o botao enviar
+        self.botaoEnviar.isEnabled = true
+        self.botaoEnviar.backgroundColor = UIColor(red: 0.553, green: 0.369, blue: 0.749, alpha: 1)
         self.imagePicker.dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func enviar(_ sender: Any) {
+        self.botaoEnviar.isEnabled = false
+        self.botaoEnviar.setTitle("Carregando...", for: .normal)
+        
+        // Salvar dados no storage Firebase
+        let imagens = self.firebaseService.storage.child("imagens") // Pasta imagens no storage
+        if let imgSelecionada = self.imagem.image {
+            if let imgDados = UIImageJPEGRepresentation(imgSelecionada, 0.1) {
+                imagens.child("\(self.idImagem).jpg").putData(imgDados, metadata: nil, completion: { (metadados, error) in
+                    if error == nil {
+                        print("Sucesso")
+                        //print(metadados?.downloadURL()?.absoluteString)
+                        //self.botaoEnviar.isEnabled = true
+                        self.botaoEnviar.setTitle("Enviado!", for: .normal)
+                    }
+                    else {
+                        print("Fail")
+                    }
+                })
+            }
+        }
     }
-    */
-
 }

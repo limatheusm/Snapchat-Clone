@@ -7,13 +7,16 @@
 //
 
 import FirebaseAuth
+import FirebaseStorage
 
 class FirebaseService {
     
     let auth: Auth
+    let storage: StorageReference
     
     init() {
         self.auth = Auth.auth()
+        self.storage = Storage.storage().reference()
     }
     
     func tratarErroCadastro(error: Error?) -> String {

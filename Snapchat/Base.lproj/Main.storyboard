@@ -344,6 +344,7 @@
                                 </state>
                                 <connections>
                                     <action selector="criarConta:" destination="5aQ-Vr-bFN" eventType="touchUpInside" id="M2P-2J-bmh"/>
+                                    <action selector="enviar:" destination="6Fy-Y0-oJN" eventType="touchUpInside" id="MT1-7h-4d3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -367,6 +368,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="botaoEnviar" destination="4t7-f6-vvH" id="VdG-NH-Wul"/>
                         <outlet property="imagem" destination="zf4-0l-Y0T" id="6mv-wP-nDO"/>
                         <outlet property="inputDescricao" destination="VaM-gj-F1b" id="ibv-Ln-HTP"/>
                     </connections>
