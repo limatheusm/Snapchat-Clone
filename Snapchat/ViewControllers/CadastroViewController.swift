@@ -14,8 +14,6 @@ class CadastroViewController: UIViewController {
     @IBOutlet weak var inputSenha: UITextField!
     @IBOutlet weak var inputConfirmarSenha: UITextField!
     let firebaseService: FirebaseService = FirebaseService()
-    let util: Util = Util()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +33,7 @@ class CadastroViewController: UIViewController {
                         self.firebaseService.auth.createUser(withEmail: email, password: senha, completion: { (user, error) in
                             if error == nil {
                                 if user == nil {
-                                    self.util.exibirMensagem(titulo: "Erro ao autenticar", mensagem: "Problema ao realizar autenticação, tente novamente", view: self)
+                                    self.present(Alerta(title: "Erro ao autenticar", message: "Problema ao realizar autenticação, tente novamente").getAlerta(), animated: true)
                                 }
                                 else {
                                     self.performSegue(withIdentifier: "cadastroLoginSegue", sender: nil)
@@ -43,12 +41,12 @@ class CadastroViewController: UIViewController {
                             }
                             else {
                                 let mensagemErro = self.firebaseService.tratarErroCadastro(error: error)
-                                self.util.exibirMensagem(titulo: "Ops!", mensagem: mensagemErro, view: self)
+                                self.present(Alerta(title: "Ops!", message: mensagemErro).getAlerta(), animated: true)
                             }
                         })
                     }
                     else {
-                        self.util.exibirMensagem(titulo: "Ops!", mensagem: "As senhas precisam ser iguais!", view: self)
+                        self.present(Alerta(title: "Ops!", message: "As senhas precisam ser iguais!").getAlerta(), animated: true)
                     }/*Fim validacao senha*/
                 }
             }

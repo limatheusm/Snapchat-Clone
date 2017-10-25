@@ -13,7 +13,6 @@ class EntrarViewController: UIViewController {
     @IBOutlet weak var inputEmail: UITextField!
     @IBOutlet weak var inputSenha: UITextField!
     let firebaseService = FirebaseService()
-    let util: Util = Util()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class EntrarViewController: UIViewController {
                     if error == nil {
                         if user == nil {
                             // Usuario nao esta logado
-                            self.util.exibirMensagem(titulo: "Erro ao autenticar", mensagem: "Problema ao realizar autenticação, tente novamente", view: self)
+                            self.present(Alerta(title: "Erro ao autenticar", message: "Problema ao realizar autenticação, tente novamente").getAlerta(), animated: true)
                         }
                         else {
                             // Sucesso
@@ -41,7 +40,7 @@ class EntrarViewController: UIViewController {
                         }
                     }
                     else {
-                        self.util.exibirMensagem(titulo: "Dados incorretos", mensagem: "Verifique os dados digitados", view: self)
+                        self.present(Alerta(title: "Dados incorretos", message: "Verifique os dados digitados").getAlerta(), animated: true)
                     }
                 })
             }

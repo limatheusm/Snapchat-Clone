@@ -14,12 +14,12 @@
 		FE014DF31F9EEA2500B90508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE014DF21F9EEA2500B90508 /* Assets.xcassets */; };
 		FE014DF61F9EEA2500B90508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE014DF41F9EEA2500B90508 /* LaunchScreen.storyboard */; };
 		FE014DFE1F9EEA3200B90508 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE014DFD1F9EEA3200B90508 /* GoogleService-Info.plist */; };
+		FE38BEF21FA14A8A000C7AD7 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38BEF11FA14A8A000C7AD7 /* Alerta.swift */; };
 		FEA8D20C1F9EEF700054AC05 /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA8D20B1F9EEF700054AC05 /* SnapViewController.swift */; };
 		FEA8D20E1F9EEF840054AC05 /* FotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA8D20D1F9EEF840054AC05 /* FotoViewController.swift */; };
 		FEABA6491F9EEAED008F6973 /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABA6471F9EEAEC008F6973 /* EntrarViewController.swift */; };
 		FEABA64A1F9EEAED008F6973 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABA6481F9EEAEC008F6973 /* CadastroViewController.swift */; };
 		FEABA6501F9EEB30008F6973 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABA64F1F9EEB30008F6973 /* FirebaseService.swift */; };
-		FEABA6521F9EEB39008F6973 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEABA6511F9EEB39008F6973 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +34,12 @@
 		FE014DF51F9EEA2500B90508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE014DF71F9EEA2500B90508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE014DFD1F9EEA3200B90508 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE38BEF11FA14A8A000C7AD7 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		FEA8D20B1F9EEF700054AC05 /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
 		FEA8D20D1F9EEF840054AC05 /* FotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoViewController.swift; sourceTree = "<group>"; };
 		FEABA6471F9EEAEC008F6973 /* EntrarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		FEABA6481F9EEAEC008F6973 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		FEABA64F1F9EEB30008F6973 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		FEABA6511F9EEB39008F6973 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,21 +92,37 @@
 		FE014DEA1F9EEA2500B90508 /* Snapchat */ = {
 			isa = PBXGroup;
 			children = (
-				FEABA64E1F9EEB26008F6973 /* util */,
+				FE38BEF01FA14A0C000C7AD7 /* Models */,
+				FE38BEEF1FA149B4000C7AD7 /* ViewControllers */,
 				FEABA64D1F9EEB20008F6973 /* firebase */,
 				FE014DEB1F9EEA2500B90508 /* AppDelegate.swift */,
-				FE014DED1F9EEA2500B90508 /* ViewController.swift */,
-				FEABA6481F9EEAEC008F6973 /* CadastroViewController.swift */,
-				FEABA6471F9EEAEC008F6973 /* EntrarViewController.swift */,
 				FE014DEF1F9EEA2500B90508 /* Main.storyboard */,
 				FE014DF21F9EEA2500B90508 /* Assets.xcassets */,
 				FE014DF41F9EEA2500B90508 /* LaunchScreen.storyboard */,
 				FE014DF71F9EEA2500B90508 /* Info.plist */,
 				FE014DFD1F9EEA3200B90508 /* GoogleService-Info.plist */,
-				FEA8D20B1F9EEF700054AC05 /* SnapViewController.swift */,
-				FEA8D20D1F9EEF840054AC05 /* FotoViewController.swift */,
 			);
 			path = Snapchat;
+			sourceTree = "<group>";
+		};
+		FE38BEEF1FA149B4000C7AD7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEA8D20B1F9EEF700054AC05 /* SnapViewController.swift */,
+				FEA8D20D1F9EEF840054AC05 /* FotoViewController.swift */,
+				FE014DED1F9EEA2500B90508 /* ViewController.swift */,
+				FEABA6481F9EEAEC008F6973 /* CadastroViewController.swift */,
+				FEABA6471F9EEAEC008F6973 /* EntrarViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FE38BEF01FA14A0C000C7AD7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FE38BEF11FA14A8A000C7AD7 /* Alerta.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FEABA64D1F9EEB20008F6973 /* firebase */ = {
@@ -115,14 +131,6 @@
 				FEABA64F1F9EEB30008F6973 /* FirebaseService.swift */,
 			);
 			path = firebase;
-			sourceTree = "<group>";
-		};
-		FEABA64E1F9EEB26008F6973 /* util */ = {
-			isa = PBXGroup;
-			children = (
-				FEABA6511F9EEB39008F6973 /* Util.swift */,
-			);
-			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,12 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE014DEE1F9EEA2500B90508 /* ViewController.swift in Sources */,
-				FEABA6521F9EEB39008F6973 /* Util.swift in Sources */,
 				FEA8D20E1F9EEF840054AC05 /* FotoViewController.swift in Sources */,
 				FEABA6501F9EEB30008F6973 /* FirebaseService.swift in Sources */,
 				FE014DEC1F9EEA2500B90508 /* AppDelegate.swift in Sources */,
 				FEA8D20C1F9EEF700054AC05 /* SnapViewController.swift in Sources */,
 				FEABA6491F9EEAED008F6973 /* EntrarViewController.swift in Sources */,
+				FE38BEF21FA14A8A000C7AD7 /* Alerta.swift in Sources */,
 				FEABA64A1F9EEAED008F6973 /* CadastroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
