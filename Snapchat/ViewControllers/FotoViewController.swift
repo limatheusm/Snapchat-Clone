@@ -58,15 +58,27 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate,
                 imagens.child("\(self.idImagem).jpg").putData(imgDados, metadata: nil, completion: { (metadados, error) in
                     if error == nil {
                         print("Sucesso")
-                        //print(metadados?.downloadURL()?.absoluteString)
-                        //self.botaoEnviar.isEnabled = true
-                        self.botaoEnviar.setTitle("Enviado!", for: .normal)
+                        let imgURL = metadados?.downloadURL()?.absoluteString
+                        self.performSegue(withIdentifier: "selecionarUsuarioSegue", sender: imgURL)
+                        self.botaoEnviar.isEnabled = true
+                        self.botaoEnviar.setTitle("Enviar", for: .normal)
                     }
                     else {
                         self.present(Alerta(title: "Ops!", message: "As senhas precisam ser iguais!").getAlerta(), animated: true)
                     }
                 })
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selecionarUsuarioSegue" {
+            let usuarioViewController = segue.destination as! UsuariosTableViewController
+            if let descricao = self.inputDescricao.text {
+                usuarioViewController.descricaoImagem = descricao
+            }
+            usuarioViewController.urlImagem = sender as! String
+            usuarioViewController.idImagem = self.idImagem
         }
     }
 }
