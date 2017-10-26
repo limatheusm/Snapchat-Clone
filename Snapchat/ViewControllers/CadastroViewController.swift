@@ -26,6 +26,11 @@ class CadastroViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // Esconder teclado
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func criarConta(_ sender: Any) {
         if let email = self.inputEmail.text {
             if let senha = self.inputSenha.text {

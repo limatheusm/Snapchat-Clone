@@ -24,6 +24,10 @@ class EntrarViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // Esconder teclado
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     @IBAction func logar(_ sender: Any) {
         if let email = self.inputEmail.text {

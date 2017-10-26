@@ -33,9 +33,14 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func escolherFoto(_ sender: Any) {
-        //imagePicker.sourceType = .camera
-        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.sourceType = .camera
+        //imagePicker.sourceType = .savedPhotosAlbum
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // Esconder teclado
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
