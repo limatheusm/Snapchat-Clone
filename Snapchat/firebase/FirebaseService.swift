@@ -8,15 +8,18 @@
 
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseDatabase
 
 class FirebaseService {
     
     let auth: Auth
     let storage: StorageReference
+    let database: DatabaseReference
     
     init() {
         self.auth = Auth.auth()
         self.storage = Storage.storage().reference()
+        self.database = Database.database().reference()
     }
     
     func tratarErroCadastro(error: Error?) -> String {
