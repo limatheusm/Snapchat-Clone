@@ -64,7 +64,7 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate,
                         self.botaoEnviar.setTitle("Enviar", for: .normal)
                     }
                     else {
-                        self.present(Alerta(title: "Ops!", message: "As senhas precisam ser iguais!").getAlerta(), animated: true)
+                        self.present(Alerta(title: "Ops!", message: "Problemas no upload, tente novamente!").getAlerta(), animated: true)
                     }
                 })
             }
