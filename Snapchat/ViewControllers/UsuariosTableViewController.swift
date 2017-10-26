@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 class UsuariosTableViewController: UITableViewController {
     
@@ -20,15 +19,21 @@ class UsuariosTableViewController: UITableViewController {
         super.viewDidLoad()
         let usuariosRef = FirebaseService().database.child("usuarios")
         // Adiciona evento novo usuario adicionado
-        usuariosRef.observe(DataEventType.childAdded) { (snapshot) in
+        usuariosRef.observe(.childAdded) { (snapshot) in
             // Converte os dados para dicionario
             let dados = snapshot.value as? NSDictionary
+            
+            // Recupera dados usuario logado
+            let idUsuarioLogado = FirebaseService().auth.currentUser?.uid
+            
             // Recuperar os dados
             let emailUser = dados?["email"] as! String
             let nomeUser = dados?["nome"] as! String
             let idUser = snapshot.key
             // Adicionar a lista de usuarios para exibir na tabela
-            self.usuarios.append(User(email: emailUser, nome: nomeUser, uid: idUser))
+            if idUser != idUsuarioLogado {
+                self.usuarios.append(User(email: emailUser, nome: nomeUser, uid: idUser))
+            }
             
             // Atualiza tabela
             self.tableView.reloadData()
@@ -89,6 +94,8 @@ class UsuariosTableViewController: UITableViewController {
                     "urlImagem" : self.urlImagem,
                     "idImagem" : self.idImagem,
                 ])
+                // retorna para view snaps
+                self.navigationController?.popToRootViewController(animated: true)
                 
             })
         }
